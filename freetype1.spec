@@ -1,20 +1,20 @@
 Summary:	Truetype font rasterizer
 Summary(pl):	Rasteryzer fontów Truetype
-Name:		freetype
-Version:	2.0.1
-Release:	3
+Name:		freetype1
+Version:	1.3.1
+Release:	1
 License:	BSD like
 Group:		Libraries
 Group(de):	Libraries
 Group(fr):	Librairies
 Group(pl):	Biblioteki
-Source0:	ftp://freetype.sourceforge.net/pub/freetype/freetype2/%{name}-%{version}.tar.bz2
+Source0:	ftp://ftp.physiol.med.tu-muenchen.de/pub/freetype/%{name}-%{version}.tar.gz
 Source1:	ttmkfdir.tar.gz
 Patch0:		%{name}-DESTDIR.patch
 Patch1:		%{name}-autoconf.patch
 Patch2:		%{name}-foundrynames.patch
 Patch3:		%{name}-nospaces.patch
-URL:		http://freetype.sourceforge.net/
+URL:		http://www.physiol.med.tu-muenchen.de/~robert/freetype.html
 BuildRequires:	gettext-devel
 BuildRequires:	XFree86-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -98,21 +98,18 @@ Przyk³adowe aplikacje wykorzystuj±ce freetype.
 %setup -q
 mkdir ttmkfdir
 tar xz -C ttmkfdir -f %{SOURCE1}
-#%patch0 -p1
-#%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%patch0 -p1
+%patch1 -p1
 
 %build
 gettextize --copy --force
 aclocal
 autoconf
-automake -a -c
 %configure \
         --enable-static \
         --with-gnu-ld
 %{__make}
-%{__make} -C ttmkfdir CC="%{__cc} $RPM_OPT_FLAGS -I../lib" FREETYPE_LIB='-L../lib/.libs -lttf'
+%{__make} -C ttmkfdir CC="gcc $RPM_OPT_FLAGS -I../lib" FREETYPE_LIB='-L../lib/.libs -lttf'
 
 %install
 rm -rf $RPM_BUILD_ROOT
