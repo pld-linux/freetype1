@@ -8,6 +8,7 @@ Group:		Libraries
 Source0:	ftp://ftp.freetype.org/freetype/freetype1/freetype-%{version}.tar.gz
 Patch0:		freetype-DESTDIR.patch
 Patch1:		freetype-autoconf.patch
+Patch2:		freetype-po.patch
 URL:		http://www.physiol.med.tu-muenchen.de/~robert/freetype.html
 BuildRequires:	XFree86-devel
 BuildRequires:	autoconf
@@ -108,6 +109,7 @@ Przyk³adowe aplikacje wykorzystuj±ce freetype:
 %setup -q -n freetype-%{version}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 install /usr/share/automake/missing .
