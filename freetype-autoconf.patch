@@ -1,6 +1,6 @@
-diff -Nru freetype-1.3.1/configure.in freetype-1.3.1.new/configure.in
---- freetype-1.3.1/configure.in	Sun Jan 16 21:18:51 2000
-+++ freetype-1.3.1.new/configure.in	Sun Jan 16 21:18:34 2000
+diff -urN freetype-1.3.1.org/configure.in freetype-1.3.1/configure.in
+--- freetype-1.3.1.org/configure.in	Fri Apr 12 13:38:29 2002
++++ freetype-1.3.1/configure.in	Fri Apr 12 13:38:43 2002
 @@ -4,6 +4,8 @@
  
  AC_INIT(lib/freetype.h)
@@ -136,3 +136,15 @@ diff -Nru freetype-1.3.1/configure.in freetype-1.3.1.new/configure.in
 +	   intl/Makefile)
  
  dnl end of configure.in
+diff -urN freetype-1.3.1.org/lib/arch/unix/Makefile.in freetype-1.3.1/lib/arch/unix/Makefile.in
+--- freetype-1.3.1.org/lib/arch/unix/Makefile.in	Fri Apr 12 13:38:30 2002
++++ freetype-1.3.1/lib/arch/unix/Makefile.in	Fri Apr 12 13:42:10 2002
+@@ -132,7 +132,7 @@
+ FT_LIBS = @LIBS@
+ 
+ # i18n stuff
+-LOCALEDIR = @LOCALEDIR@
++LOCALEDIR = @datadir@/locale
+ 
+ 
+ all: do_link
