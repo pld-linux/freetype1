@@ -6,6 +6,7 @@ Release:	1
 License:	BSD like
 Group:		Libraries
 Group(de):	Libraries
+Group(es):	Bibliotecas
 Group(fr):	Librairies
 Group(pl):	Biblioteki
 Source0:	ftp://ftp.physiol.med.tu-muenchen.de/pub/freetype/freetype-%{version}.tar.gz
@@ -109,15 +110,13 @@ autoconf
         --enable-static \
         --with-gnu-ld
 %{__make}
-%{__make} -C ttmkfdir CC="gcc $RPM_OPT_FLAGS -I../lib" FREETYPE_LIB='-L../lib/.libs -lttf'
+%{__make} -C ttmkfdir CC="%{__cc} %{rpmcflags} -I../lib" FREETYPE_LIB='-L../lib/.libs -lttf'
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 install ttmkfdir/ttmkfdir $RPM_BUILD_ROOT%{_bindir}
-
-strip $RPM_BUILD_ROOT%{_libdir}/lib*so.*.*
 
 gzip -9nf howto/unix.txt README announce docs/{*.txt,FAQ,TODO,credits}
 
