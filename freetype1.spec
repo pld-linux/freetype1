@@ -95,7 +95,7 @@ Freetype library utilites:
 Przyk³adowe aplikacje wykorzystuj±ce freetype.
 
 %prep
-%setup -q
+%setup -q -n freetype-%{version}
 mkdir ttmkfdir
 tar xz -C ttmkfdir -f %{SOURCE1}
 %patch0 -p1
