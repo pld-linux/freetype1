@@ -113,7 +113,7 @@ Przyk³adowe aplikacje wykorzystuj±ce freetype:
 install /usr/share/automake/missing .
 %{__gettextize}
 %{__libtoolize}
-aclocal
+%{__aclocal}
 %{__autoconf}
 %configure \
         --enable-static \
