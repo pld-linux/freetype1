@@ -2,7 +2,7 @@ Summary:	Truetype font rasterizer
 Summary(pl):	Rasteryzer fontów Truetype
 Name:		freetype1
 Version:	1.3.1
-Release:	1
+Release:	2
 License:	BSD like
 Group:		Libraries
 Group(de):	Libraries
@@ -16,8 +16,11 @@ Patch1:		freetype-autoconf.patch
 Patch2:		freetype-foundrynames.patch
 Patch3:		freetype-nospaces.patch
 URL:		http://www.physiol.med.tu-muenchen.de/~robert/freetype.html
-BuildRequires:	gettext-devel
 BuildRequires:	XFree86-devel
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	gettext-devel
+BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
