@@ -2,7 +2,7 @@ Summary:	Truetype font rasterizer
 Summary(pl):	Rasteryzer fontów Truetype
 Name:		freetype1
 Version:	1.3.1
-Release:	6
+Release:	7
 License:	BSD-like
 Group:		Libraries
 Source0:	ftp://ftp.freetype.org/freetype/freetype1/freetype-%{version}.tar.gz
@@ -14,6 +14,7 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
 BuildRequires:	libtool
+Provides:	freetype = %{version}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -38,6 +39,7 @@ Summary:	Header files and development documentation
 Summary(pl):	Pliki nag³ówkowe biblioteki freetype i dokumentacja
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
+Provides:	freetype-devel = %{version}
 
 %description devel
 This package includes the header files documentations and libraries
@@ -52,6 +54,7 @@ Summary:	Freetype static libraries
 Summary(pl):	Biblioteki statyczne freetype
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}
+Provides:	freetype-static = %{version}
 
 %description static
 Static freetype libraries.
@@ -64,6 +67,7 @@ Summary:	Freetype library utilities
 Summary(pl):	Programy u¿ytkowe freetype
 Group:		Applications
 Requires:	%{name} = %{version}
+Provides:	freetype-progs = %{version}
 Obsoletes:	freetype-utils
 Obsoletes:	freetype-tools
 
@@ -116,8 +120,6 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-gzip -9nf howto/unix.txt README announce docs/{*.txt,FAQ,TODO,credits}
-
 %find_lang freetype
 
 %clean
@@ -132,7 +134,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc howto/unix* docs/*txt* *.gz
+%doc howto/unix.txt README announce docs/{*.txt,FAQ,TODO,credits}
 %attr(755,root,root) %{_libdir}/lib*.so
 %attr(755,root,root) %{_libdir}/lib*.la
 %{_includedir}/*
