@@ -114,6 +114,9 @@ Przyk³adowe aplikacje wykorzystuj±ce freetype:
 %build
 install /usr/share/automake/missing .
 %{__gettextize}
+# gettextize stupidity (doesn't see intl/Makefile in next lines after AC_OUTPUT)
+sed -e 's@\(AC_OUTPUT.*\) intl/Makefile@\1@' configure.in > configure.in.tmp
+mv -f configure.in.tmp configure.in
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
