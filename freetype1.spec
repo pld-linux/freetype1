@@ -6,6 +6,7 @@ Release:	10
 License:	BSD-like
 Group:		Libraries
 Source0:	ftp://ftp.freetype.org/freetype/freetype1/freetype-%{version}.tar.gz
+# Source0-md5: 9a9e7ad00c1ef6dfbf8f8e19ceefb300
 Patch0:		freetype-DESTDIR.patch
 Patch1:		freetype-autoconf.patch
 Patch2:		freetype-po.patch
