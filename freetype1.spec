@@ -104,6 +104,7 @@ tar xz -C ttmkfdir -f %{SOURCE1}
 
 %build
 gettextize --copy --force
+libtoolize --copy --force
 aclocal
 autoconf
 %configure \
