@@ -46,7 +46,7 @@ Requires:	%{name} = %{version}
 This package includes the header files documentations and libraries
 necessary to develop applications that use freetype.
 
-%description -l pl devel 
+%description devel -l pl
 Pakiet ten zawiera pliki nag³ówkowe oraz biblioteki niezbêdne przy
 kompilowaniu programów wykorzystuj±cych bibliotekê freetype.
 
@@ -59,7 +59,7 @@ Requires:	%{name}-devel = %{version}
 %description static
 Static freetype libraries.
 
-%description -l pl static 
+%description static -l pl
 Biblioteki statyczne freetype.
 
 %package progs
@@ -84,7 +84,7 @@ Freetype library utilites:
 - fterror - small test program. Tests the gettext() functionality for
   internationalized messages.
 
-%description -l pl progs
+%description progs -l pl
 Przyk³adowe aplikacje wykorzystuj±ce freetype.
 
 %prep
