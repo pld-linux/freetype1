@@ -1,0 +1,97 @@
+diff -Nru freetype-1.3/contrib/ttf2bdf/Makefile.in freetype-1.3.new/contrib/ttf2bdf/Makefile.in
+--- freetype-1.3/contrib/ttf2bdf/Makefile.in	Sun Dec  6 19:50:22 1998
++++ freetype-1.3.new/contrib/ttf2bdf/Makefile.in	Wed Oct 27 08:40:04 1999
+@@ -63,9 +63,9 @@
+ 	$(CC) $(CFLAGS) $(INCS) -c $< -o $@
+ 
+ install: ttf2bdf
+-	@$(MKINSTALLDIRS) $(bindir) $(mandir)/man1
+-	@cp ttf2bdf $(bindir)/ttf2bdf
+-	@cp ttf2bdf.man $(mandir)/man1/ttf2bdf.1
++	@$(MKINSTALLDIRS) $(bindir) $(DESTDIR)$(mandir)/man1
++	@cp ttf2bdf $(DESTDIR)$(bindir)/ttf2bdf
++	@cp ttf2bdf.man $(DESTDIR)$(mandir)/man1/ttf2bdf.1
+ 
+ uninstall:
+ 	@$(RM) -f $(bindir)/ttf2bdf
+diff -Nru freetype-1.3/contrib/ttf2pfb/Makefile.in freetype-1.3.new/contrib/ttf2pfb/Makefile.in
+--- freetype-1.3/contrib/ttf2pfb/Makefile.in	Wed May  5 06:48:16 1999
++++ freetype-1.3.new/contrib/ttf2pfb/Makefile.in	Wed Oct 27 08:40:33 1999
+@@ -58,11 +58,11 @@
+ 	$(CC) -c $(FT_CFLAGS) $<
+ 
+ install: $(PROGRAMS)
+-	$(MKINSTALLDIRS) $(bindir)
++	$(MKINSTALLDIRS) $(DESTDIR)$(bindir)
+ 	for P in $(PROGRAMS) ; do \
+-	  $(LIBTOOL) --mode=install $(INSTALL_PROGRAM) $$P $(bindir)/$$P ; \
++	  $(LIBTOOL) --mode=install $(INSTALL_PROGRAM) $$P $(DESTDIR)$(bindir)/$$P ; \
+ 	done
+-	$(INSTALL_PROGRAM) $(srcdir)/getafm $(bindir)/getafm
++	$(INSTALL_PROGRAM) $(srcdir)/getafm $(DESTDIR)$(bindir)/getafm
+ 
+ uninstall:
+ 	-for P in $(PROGRAMS) ; do \
+diff -Nru freetype-1.3/contrib/ttf2pk/Makefile.in freetype-1.3.new/contrib/ttf2pk/Makefile.in
+--- freetype-1.3/contrib/ttf2pk/Makefile.in	Thu Sep  3 07:12:57 1998
++++ freetype-1.3.new/contrib/ttf2pk/Makefile.in	Wed Oct 27 08:40:58 1999
+@@ -69,10 +69,10 @@
+                                      $(LIBDIR)/libttf.la $(LDFLAGS)
+ 
+ install: $(PROGRAMS)
+-	$(MKINSTALLDIRS) $(bindir) $(mandir)/man1
++	$(MKINSTALLDIRS) $(DESTDIR)$(bindir) $(DESTDIR)$(mandir)/man1
+ 	for P in $(PROGRAMS) ; do \
+-          $(LIBTOOL) --mode=install $(INSTALL_PROGRAM) $$P $(bindir)/$$P ; \
+-          $(INSTALL_DATA) $(srcdir)/$$P.1 $(mandir)/man1 ; \
++          $(LIBTOOL) --mode=install $(INSTALL_PROGRAM) $$P $(DESTDIR)$(bindir)/$$P ; \
++          $(INSTALL_DATA) $(srcdir)/$$P.1 $(DESTDIR)$(mandir)/man1 ; \
+         done
+ 
+ uninstall:
+diff -Nru freetype-1.3/contrib/ttfbanner/Makefile.in freetype-1.3.new/contrib/ttfbanner/Makefile.in
+--- freetype-1.3/contrib/ttfbanner/Makefile.in	Wed Dec 30 18:54:37 1998
++++ freetype-1.3.new/contrib/ttfbanner/Makefile.in	Wed Oct 27 08:41:18 1999
+@@ -53,8 +53,8 @@
+ 	$(CC) -c $(FT_CFLAGS) $<
+ 
+ install: ttfbanner
+-	$(MKINSTALLDIRS) $(bindir)
+-	$(LIBTOOL) --mode=install $(INSTALL_PROGRAM) ttfbanner $(bindir)/
++	$(MKINSTALLDIRS) $(DESTDIR)$(bindir)
++	$(LIBTOOL) --mode=install $(INSTALL_PROGRAM) ttfbanner $(DESTDIR)$(bindir)/
+ 
+ uninstall:
+ 	$(LIBTOOL) --mode=uninstall $(RM) $(bindir)/ttfbanner
+diff -Nru freetype-1.3/lib/arch/unix/Makefile.in freetype-1.3.new/lib/arch/unix/Makefile.in
+--- freetype-1.3/lib/arch/unix/Makefile.in	Sat Jul 31 08:48:17 1999
++++ freetype-1.3.new/lib/arch/unix/Makefile.in	Wed Oct 27 08:55:09 1999
+@@ -200,10 +200,10 @@
+                                -version-info $(version_info) $(FT_LIBS)
+ 
+ install: libttf.la
+-	$(MKINSTALLDIRS) $(libdir) $(includedir)/freetype
+-	$(LIBTOOL) --mode=install $(INSTALL) libttf.la $(libdir)
++	$(MKINSTALLDIRS) $(DESTDIR)$(libdir) $(DESTDIR)$(includedir)/freetype
++	$(LIBTOOL) --mode=install $(INSTALL) libttf.la $(DESTDIR)$(libdir)
+ 	-for P in $(HEADERS) ; do \
+-          $(INSTALL_DATA) $$P $(includedir)/freetype ; \
++          $(INSTALL_DATA) $$P $(DESTDIR)$(includedir)/freetype ; \
+         done
+ 
+ uninstall: 
+diff -Nru freetype-1.3/test/arch/unix/Makefile.in freetype-1.3.new/test/arch/unix/Makefile.in
+--- freetype-1.3/test/arch/unix/Makefile.in	Mon Jun 28 21:52:08 1999
++++ freetype-1.3.new/test/arch/unix/Makefile.in	Wed Oct 27 09:04:53 1999
+@@ -125,9 +125,9 @@
+ 
+ 
+ install: $(PROGRAMS)
+-	$(MKINSTALLDIRS) $(bindir)
++	$(MKINSTALLDIRS) $(DESTDIR)$(bindir)
+ 	for P in $(PROGRAMS) ; do \
+-          $(LIBTOOL) --mode=install $(INSTALL_PROGRAM) $$P $(bindir)/$$P ; \
++          $(LIBTOOL) --mode=install $(INSTALL_PROGRAM) $$P $(DESTDIR)$(bindir)/$$P ; \
+         done
+ 
+ uninstall:
