@@ -2,15 +2,12 @@ Summary:	Truetype font rasterizer
 Summary(pl):	Rasteryzer fontów Truetype
 Name:		freetype1
 Version:	1.3.1
-Release:	3
+Release:	4
 License:	BSD-like
 Group:		Libraries
 Source0:	ftp://ftp.freetype.org/freetype/freetype1/freetype-%{version}.tar.gz
-Source1:	ttmkfdir.tar.gz
 Patch0:		freetype-DESTDIR.patch
 Patch1:		freetype-autoconf.patch
-Patch2:		freetype-foundrynames.patch
-Patch3:		freetype-nospaces.patch
 URL:		http://www.physiol.med.tu-muenchen.de/~robert/freetype.html
 BuildRequires:	XFree86-devel
 BuildRequires:	autoconf
@@ -85,12 +82,20 @@ Freetype library utilites:
   internationalized messages.
 
 %description progs -l pl
-Przyk³adowe aplikacje wykorzystuj±ce freetype.
-
+Przyk³adowe aplikacje wykorzystuj±ce freetype:
+- ftimer - narzêdzie mierz±ce szybko¶æ silnika
+- fzoom - prosta przegl±darka glifów
+- ftlint - program robi±cy hinting ka¿dego glifu z fontu przy podanym
+  rozmiarze
+- ftview - program wy¶wietlaj±cy z hintingiem wszystkie glify z fontu
+- fdump - narzêdzie zrzucaj±ce dane z fontu lub zestawu fontów TT
+- ftstring - prosty program obrazuj±cy generowanie tekstu
+- ftstrpn - konwerter zrenderowanego tekstu na format PGM/PBM
+- fterror - prosty program testuj±cy dzia³anie gettext() w
+  zlokalizowanych komunikatach.
+  
 %prep
 %setup -q -n freetype-%{version}
-mkdir ttmkfdir
-tar xz -C ttmkfdir -f %{SOURCE1}
 %patch0 -p1
 %patch1 -p1
 
@@ -103,27 +108,25 @@ autoconf
         --enable-static \
         --with-gnu-ld
 %{__make}
-%{__make} -C ttmkfdir CC="%{__cc} %{rpmcflags} -I../lib" FREETYPE_LIB='-L../lib/.libs -lttf'
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
-install ttmkfdir/ttmkfdir $RPM_BUILD_ROOT%{_bindir}
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 gzip -9nf howto/unix.txt README announce docs/{*.txt,FAQ,TODO,credits}
 
 %find_lang freetype
 
-%post   -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%post   -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
+
 %files -f freetype.lang
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/ttmkfdir
 %attr(755,root,root) %{_libdir}/lib*so.*.*
 
 %files devel
