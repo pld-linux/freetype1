@@ -5,13 +5,6 @@ Version:	1.3.1
 Release:	3
 License:	BSD like
 Group:		Libraries
-Group(de):	Libraries
-Group(es):	Bibliotecas
-Group(fr):	Librairies
-Group(pl):	Biblioteki
-Group(pt_BR):	Bibliotecas
-Group(ru):	Библиотеки
-Group(uk):	Б╕бл╕отеки
 Source0:	ftp://ftp.freetype.org/freetype/freetype1/freetype-%{version}.tar.gz
 Source1:	ttmkfdir.tar.gz
 Patch0:		freetype-DESTDIR.patch
@@ -47,13 +40,6 @@ FreeType jest bibliotek╠ sЁu©╠c╠ do rasteryzacji fontСw TrueType. Kody
 Summary:	Header files and development documentation
 Summary(pl):	Pliki nagЁСwkowe biblioteki freetype i dokumentacja
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 
 %description devel
@@ -68,13 +54,6 @@ kompilowaniu programСw wykorzystuj╠cych bibliotekЙ freetype.
 Summary:	Freetype static libraries
 Summary(pl):	Biblioteki statyczne freetype
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name}-devel = %{version}
 
 %description static
@@ -87,8 +66,6 @@ Biblioteki statyczne freetype.
 Summary:	Freetype library utilities
 Summary(pl):	Programy u©ytkowe freetype
 Group:		Applications
-Group(de):	Applikationen
-Group(pl):	Aplikacje
 Requires:	%{name} = %{version}
 Obsoletes:	freetype-utils
 Obsoletes:	freetype-tools
