@@ -2,7 +2,7 @@ Summary:	Truetype font rasterizer
 Summary(pl):	Rasteryzer fontów Truetype
 Name:		freetype1
 Version:	1.3.1
-Release:	9
+Release:	10
 License:	BSD-like
 Group:		Libraries
 Source0:	ftp://ftp.freetype.org/freetype/freetype1/freetype-%{version}.tar.gz
@@ -130,6 +130,9 @@ rm -rf $RPM_BUILD_ROOT
 
 # resolve conflict with freetype-demos-2.*
 mv -f $RPM_BUILD_ROOT%{_bindir}/{ftdump,ft1dump}
+mv -f $RPM_BUILD_ROOT%{_bindir}/{ftlint,ft1lint}
+mv -f $RPM_BUILD_ROOT%{_bindir}/{ftview,ft1view}
+mv -f $RPM_BUILD_ROOT%{_bindir}/{fttimer,ft1timer}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
