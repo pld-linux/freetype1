@@ -104,7 +104,7 @@ install /usr/share/automake/missing .
 gettextize --copy --force
 libtoolize --copy --force
 aclocal
-autoconf
+%{__autoconf}
 %configure \
         --enable-static \
         --with-gnu-ld
