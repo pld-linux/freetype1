@@ -101,7 +101,7 @@ Przyk³adowe aplikacje wykorzystuj±ce freetype:
 
 %build
 install /usr/share/automake/missing .
-gettextize --copy --force
+%{__gettextize}
 %{__libtoolize}
 aclocal
 %{__autoconf}
