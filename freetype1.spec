@@ -3,7 +3,7 @@ Summary(pl):	Rasteryzer fontów Truetype
 Name:		freetype1
 Version:	1.3.1
 Release:	3
-License:	BSD like
+License:	BSDish
 Group:		Libraries
 Source0:	ftp://ftp.freetype.org/freetype/freetype1/freetype-%{version}.tar.gz
 Source1:	ttmkfdir.tar.gz
