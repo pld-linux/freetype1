@@ -106,7 +106,7 @@ Przyk³adowe aplikacje wykorzystuj±ce freetype:
 - ftstrpn - konwerter zrenderowanego tekstu na format PGM/PBM
 - fterror - prosty program testuj±cy dzia³anie gettext() w
   zlokalizowanych komunikatach.
-  
+
 %prep
 %setup -q -n freetype-%{version}
 %patch0 -p1
