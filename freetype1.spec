@@ -2,7 +2,7 @@ Summary:	Truetype font rasterizer
 Summary(pl):	Rasteryzer fontów Truetype
 Name:		freetype1
 Version:	1.3.1
-Release:	7
+Release:	8
 License:	BSD-like
 Group:		Libraries
 Source0:	ftp://ftp.freetype.org/freetype/freetype1/freetype-%{version}.tar.gz
@@ -14,7 +14,6 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
 BuildRequires:	libtool
-Provides:	freetype = %{version}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -31,8 +30,15 @@ a "TrueType driver" for a higher-level library, though rendering text
 with it is extremely easy, as demo-ed by the test programs.
 
 %description -l pl
-FreeType jest bibliotek± s³u¿±c± do rasteryzacji fontów TrueType. Kody
-¼ród³owe napisane s± w ANSI C oraz PASCAL'u.
+FreeType jest bibliotek± s³u¿±c± do rasteryzacji fontów TrueType. Jest
+to jedynie biblioteka, a nie serwer fontów, chocia¿ zosta³a ona
+zaprojektowana do u¿ywania tak¿e w takich serwerach. Nie jest to te¿
+kompletna biblioteka do rasteryzacji tekstu. Jej celem jest tylko
+odczytywanie i zarz±dzanie plikami z fontami oraz wczytywanie i
+wykonywanie hintingu i rasteryzacji poszczególnych glifów. Mo¿e byæ
+tak¿e uwa¿ana za "sterownik TrueType" dla bibliotek wy¿szego poziomu,
+jednak u¿ycie samej biblioteki FreeType do rasteryzacji jest bardzo
+proste, co mo¿na zobaczyæ w programach demonstracyjnych.
 
 %package devel
 Summary:	Header files and development documentation
