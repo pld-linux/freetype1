@@ -10,10 +10,10 @@ Group(fr):	Librairies
 Group(pl):	Biblioteki
 Source0:	ftp://ftp.physiol.med.tu-muenchen.de/pub/freetype/freetype-%{version}.tar.gz
 Source1:	ttmkfdir.tar.gz
-Patch0:		%{name}-DESTDIR.patch
-Patch1:		%{name}-autoconf.patch
-Patch2:		%{name}-foundrynames.patch
-Patch3:		%{name}-nospaces.patch
+Patch0:		freetype-DESTDIR.patch
+Patch1:		freetype-autoconf.patch
+Patch2:		freetype-foundrynames.patch
+Patch3:		freetype-nospaces.patch
 URL:		http://www.physiol.med.tu-muenchen.de/~robert/freetype.html
 BuildRequires:	gettext-devel
 BuildRequires:	XFree86-devel
