@@ -9,7 +9,7 @@ Group(de):	Libraries
 Group(es):	Bibliotecas
 Group(fr):	Librairies
 Group(pl):	Biblioteki
-Source0:	ftp://ftp.physiol.med.tu-muenchen.de/pub/freetype/freetype-%{version}.tar.gz
+Source0:	ftp://ftp.freetype.org/freetype/freetype1/freetype-%{version}.tar.gz
 Source1:	ttmkfdir.tar.gz
 Patch0:		freetype-DESTDIR.patch
 Patch1:		freetype-autoconf.patch
