@@ -1,0 +1,5 @@
+- changed freetype1 header files directory... so needed to fix a few
+  packages; rel++; STBR
+- NOTE: this is needed for mozilla to build correctly (not to conflict
+  with freetype1)
+- NOTE2: not one binary file was altered since the previous release
