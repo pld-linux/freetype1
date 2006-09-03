@@ -47,7 +47,7 @@ proste, co mo¿na zobaczyæ w programach demonstracyjnych.
 Summary:	Header files and development documentation
 Summary(pl):	Pliki nag³ówkowe biblioteki freetype i dokumentacja
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 Provides:	freetype-devel = %{version}
 
 %description devel
@@ -62,7 +62,7 @@ kompilowaniu programów wykorzystuj±cych bibliotekê freetype.
 Summary:	Freetype static libraries
 Summary(pl):	Biblioteki statyczne freetype
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 Provides:	freetype-static = %{version}
 
 %description static
@@ -75,7 +75,7 @@ Biblioteki statyczne freetype.
 Summary:	Freetype library utilities
 Summary(pl):	Programy u¿ytkowe freetype
 Group:		Applications
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 Provides:	freetype-progs = %{version}
 Obsoletes:	freetype-utils
 Obsoletes:	freetype-tools
