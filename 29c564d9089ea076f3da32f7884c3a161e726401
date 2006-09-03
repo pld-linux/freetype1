@@ -1,0 +1,1 @@
+- added Provides: freetype* = %{version}, new %doc, release 7
