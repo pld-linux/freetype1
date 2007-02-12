@@ -1,5 +1,5 @@
 Summary:	Truetype font rasterizer
-Summary(pl):	Rasteryzer fontów Truetype
+Summary(pl.UTF-8):   Rasteryzer fontÃ³w Truetype
 Name:		freetype1
 Version:	1.3.1
 Release:	11
@@ -32,20 +32,20 @@ hint and render individual glyphs efficiently. You can also see it as
 a "TrueType driver" for a higher-level library, though rendering text
 with it is extremely easy, as demo-ed by the test programs.
 
-%description -l pl
-FreeType jest bibliotek± s³u¿±c± do rasteryzacji fontów TrueType. Jest
-to jedynie biblioteka, a nie serwer fontów, chocia¿ zosta³a ona
-zaprojektowana do u¿ywania tak¿e w takich serwerach. Nie jest to te¿
+%description -l pl.UTF-8
+FreeType jest bibliotekÄ… sÅ‚uÅ¼Ä…cÄ… do rasteryzacji fontÃ³w TrueType. Jest
+to jedynie biblioteka, a nie serwer fontÃ³w, chociaÅ¼ zostaÅ‚a ona
+zaprojektowana do uÅ¼ywania takÅ¼e w takich serwerach. Nie jest to teÅ¼
 kompletna biblioteka do rasteryzacji tekstu. Jej celem jest tylko
-odczytywanie i zarz±dzanie plikami z fontami oraz wczytywanie i
-wykonywanie hintingu i rasteryzacji poszczególnych glifów. Mo¿e byæ
-tak¿e uwa¿ana za "sterownik TrueType" dla bibliotek wy¿szego poziomu,
-jednak u¿ycie samej biblioteki FreeType do rasteryzacji jest bardzo
-proste, co mo¿na zobaczyæ w programach demonstracyjnych.
+odczytywanie i zarzÄ…dzanie plikami z fontami oraz wczytywanie i
+wykonywanie hintingu i rasteryzacji poszczegÃ³lnych glifÃ³w. MoÅ¼e byÄ‡
+takÅ¼e uwaÅ¼ana za "sterownik TrueType" dla bibliotek wyÅ¼szego poziomu,
+jednak uÅ¼ycie samej biblioteki FreeType do rasteryzacji jest bardzo
+proste, co moÅ¼na zobaczyÄ‡ w programach demonstracyjnych.
 
 %package devel
 Summary:	Header files and development documentation
-Summary(pl):	Pliki nag³ówkowe biblioteki freetype i dokumentacja
+Summary(pl.UTF-8):   Pliki nagÅ‚Ã³wkowe biblioteki freetype i dokumentacja
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Provides:	freetype-devel = %{version}
@@ -54,13 +54,13 @@ Provides:	freetype-devel = %{version}
 This package includes the header files documentations and libraries
 necessary to develop applications that use freetype.
 
-%description devel -l pl
-Pakiet ten zawiera pliki nag³ówkowe oraz biblioteki niezbêdne przy
-kompilowaniu programów wykorzystuj±cych bibliotekê freetype.
+%description devel -l pl.UTF-8
+Pakiet ten zawiera pliki nagÅ‚Ã³wkowe oraz biblioteki niezbÄ™dne przy
+kompilowaniu programÃ³w wykorzystujÄ…cych bibliotekÄ™ freetype.
 
 %package static
 Summary:	Freetype static libraries
-Summary(pl):	Biblioteki statyczne freetype
+Summary(pl.UTF-8):   Biblioteki statyczne freetype
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Provides:	freetype-static = %{version}
@@ -68,12 +68,12 @@ Provides:	freetype-static = %{version}
 %description static
 Static freetype libraries.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Biblioteki statyczne freetype.
 
 %package progs
 Summary:	Freetype library utilities
-Summary(pl):	Programy u¿ytkowe freetype
+Summary(pl.UTF-8):   Programy uÅ¼ytkowe freetype
 Group:		Applications
 Requires:	%{name} = %{version}-%{release}
 Provides:	freetype-progs = %{version}
@@ -94,17 +94,17 @@ Freetype library utilites:
 - fterror - small test program. Tests the gettext() functionality for
   internationalized messages.
 
-%description progs -l pl
-Przyk³adowe aplikacje wykorzystuj±ce freetype:
-- ftimer - narzêdzie mierz±ce szybko¶æ silnika
-- fzoom - prosta przegl±darka glifów
-- ftlint - program robi±cy hinting ka¿dego glifu z fontu przy podanym
+%description progs -l pl.UTF-8
+PrzykÅ‚adowe aplikacje wykorzystujÄ…ce freetype:
+- ftimer - narzÄ™dzie mierzÄ…ce szybkoÅ›Ä‡ silnika
+- fzoom - prosta przeglÄ…darka glifÃ³w
+- ftlint - program robiÄ…cy hinting kaÅ¼dego glifu z fontu przy podanym
   rozmiarze
-- ftview - program wy¶wietlaj±cy z hintingiem wszystkie glify z fontu
-- fdump - narzêdzie zrzucaj±ce dane z fontu lub zestawu fontów TT
-- ftstring - prosty program obrazuj±cy generowanie tekstu
+- ftview - program wyÅ›wietlajÄ…cy z hintingiem wszystkie glify z fontu
+- fdump - narzÄ™dzie zrzucajÄ…ce dane z fontu lub zestawu fontÃ³w TT
+- ftstring - prosty program obrazujÄ…cy generowanie tekstu
 - ftstrpn - konwerter zrenderowanego tekstu na format PGM/PBM
-- fterror - prosty program testuj±cy dzia³anie gettext() w
+- fterror - prosty program testujÄ…cy dziaÅ‚anie gettext() w
   zlokalizowanych komunikatach.
 
 %prep
