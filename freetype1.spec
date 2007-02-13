@@ -1,5 +1,5 @@
 Summary:	Truetype font rasterizer
-Summary(pl.UTF-8):   Rasteryzer fontów Truetype
+Summary(pl.UTF-8):	Rasteryzer fontów Truetype
 Name:		freetype1
 Version:	1.3.1
 Release:	11
@@ -45,7 +45,7 @@ proste, co można zobaczyć w programach demonstracyjnych.
 
 %package devel
 Summary:	Header files and development documentation
-Summary(pl.UTF-8):   Pliki nagłówkowe biblioteki freetype i dokumentacja
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki freetype i dokumentacja
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Provides:	freetype-devel = %{version}
@@ -60,7 +60,7 @@ kompilowaniu programów wykorzystujących bibliotekę freetype.
 
 %package static
 Summary:	Freetype static libraries
-Summary(pl.UTF-8):   Biblioteki statyczne freetype
+Summary(pl.UTF-8):	Biblioteki statyczne freetype
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Provides:	freetype-static = %{version}
@@ -73,7 +73,7 @@ Biblioteki statyczne freetype.
 
 %package progs
 Summary:	Freetype library utilities
-Summary(pl.UTF-8):   Programy użytkowe freetype
+Summary(pl.UTF-8):	Programy użytkowe freetype
 Group:		Applications
 Requires:	%{name} = %{version}-%{release}
 Provides:	freetype-progs = %{version}
