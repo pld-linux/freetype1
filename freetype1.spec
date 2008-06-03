@@ -12,11 +12,11 @@ Patch1:		freetype-autoconf.patch
 Patch2:		%{name}-po.patch
 Patch3:		freetype-gcc33.patch
 URL:		http://www.physiol.med.tu-muenchen.de/~robert/freetype.html
-BuildRequires:	XFree86-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
 BuildRequires:	libtool
+BuildRequires:	xorg-lib-libX11-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
