@@ -1,3 +1,9 @@
+# TODO:
+# - fix build with libtool-2
+#
+# Conditional build:
+%bcond_without	static_libs	# don't build static libraries
+#
 Summary:	Truetype font rasterizer
 Summary(pl.UTF-8):	Rasteryzer fontów Truetype
 Name:		freetype1
@@ -11,7 +17,7 @@ Patch0:		freetype-DESTDIR.patch
 Patch1:		freetype-autoconf.patch
 Patch2:		%{name}-po.patch
 Patch3:		freetype-gcc33.patch
-URL:		http://www.physiol.med.tu-muenchen.de/~robert/freetype.html
+URL:		http://freetype.sourceforge.net/freetype1/index.html
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
@@ -124,7 +130,7 @@ mv -f configure.in.tmp configure.in
 %{__aclocal}
 %{__autoconf}
 %configure \
-        --enable-static \
+	%{?with_static_libs:--enable-static} \
         --with-gnu-ld
 %{__make}
 
@@ -159,9 +165,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/lib*.la
 %{_includedir}/*
 
+%if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
+%endif
 
 %files progs
 %defattr(644,root,root,755)
