@@ -156,13 +156,14 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f freetype.lang
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*so.*.*
+%attr(755,root,root) %{_libdir}/libttf.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libttf.so.2
 
 %files devel
 %defattr(644,root,root,755)
 %doc howto/unix.txt README announce docs/{*.txt,FAQ,TODO,credits}
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
+%attr(755,root,root) %{_libdir}/libttf.so
+%{_libdir}/libttf.la
 %{_includedir}/*
 
 %if %{with static_libs}
