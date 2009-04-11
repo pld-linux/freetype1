@@ -1,0 +1,11 @@
+--- a/Makefile.in~	1998-08-20 03:59:56.000000000 +0200
++++ b/Makefile.in	2009-04-11 16:18:28.419051302 +0200
+@@ -22,7 +22,7 @@
+ ttlibdebug:
+ 	cd $(FTLIBDIR); $(MAKE) -f $(MAKEFILE) debug
+ 
+-tttest:
++tttest: ttlib
+ 	cd $(FTTESTDIR); $(MAKE) -f $(MAKEFILE) all
+ 
+ ttpo:
