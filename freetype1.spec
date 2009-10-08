@@ -18,6 +18,7 @@ Patch1:		freetype-autoconf.patch
 Patch2:		%{name}-po.patch
 Patch3:		freetype-gcc33.patch
 Patch4:		%{name}-parallel-make.patch
+Patch5:		%{name}-link.patch
 URL:		http://freetype.sourceforge.net/freetype1/index.html
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -121,6 +122,7 @@ Przykładowe aplikacje wykorzystujące freetype:
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 %build
 install /usr/share/automake/missing .
