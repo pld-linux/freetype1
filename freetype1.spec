@@ -8,7 +8,7 @@ Summary:	Truetype font rasterizer
 Summary(pl.UTF-8):	Rasteryzer fontów Truetype
 Name:		freetype1
 Version:	1.3.1
-Release:	13
+Release:	14
 License:	BSD-like
 Group:		Libraries
 Source0:	ftp://ftp.freetype.org/freetype/freetype1/freetype-%{version}.tar.gz
@@ -138,6 +138,18 @@ mv -f configure.in.tmp configure.in
         --with-gnu-ld
 %{__make}
 
+cd contrib
+# ttf2pfb ttf2pk don't build
+for bdir in ttf2bdf ttfbanner; do
+	cd $bdir
+	%{__libtoolize}
+	%{__aclocal}
+	%{__autoconf}
+	%configure
+	%{__make} -j1
+	cd ..
+done
+
 %install
 rm -rf $RPM_BUILD_ROOT
 
@@ -151,6 +163,11 @@ mv -f $RPM_BUILD_ROOT%{_bindir}/{ftdump,ft1dump}
 mv -f $RPM_BUILD_ROOT%{_bindir}/{ftlint,ft1lint}
 mv -f $RPM_BUILD_ROOT%{_bindir}/{ftview,ft1view}
 mv -f $RPM_BUILD_ROOT%{_bindir}/{fttimer,ft1timer}
+
+for bdir in ttf2bdf ttfbanner; do
+	%{__make} install -C contrib/$bdir \
+		DESTDIR=$RPM_BUILD_ROOT
+done
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -179,3 +196,5 @@ rm -rf $RPM_BUILD_ROOT
 %files progs
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/f*
+%attr(755,root,root) %{_bindir}/ttf*
+%{_mandir}/man1/ttf2bdf.1*
