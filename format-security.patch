@@ -1,0 +1,11 @@
+--- freetype-1.3.1/test/ftdump.c~	2012-12-12 13:04:33.074183494 +0100
++++ freetype-1.3.1/test/ftdump.c	2012-12-12 13:05:19.357515195 +0100
+@@ -312,7 +312,7 @@
+       printf( "%s\n\n", name_buffer );
+ 
+     if ( LookUp_Name( 7 ) )
+-      printf( name_buffer );
++      printf( "%s", name_buffer );
+ 
+     printf( "\n" );
+     separator_line( stdout, 78 );

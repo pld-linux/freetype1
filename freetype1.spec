@@ -8,7 +8,7 @@ Summary:	Truetype font rasterizer
 Summary(pl.UTF-8):	Rasteryzer fontów Truetype
 Name:		freetype1
 Version:	1.3.1
-Release:	14
+Release:	15
 License:	BSD-like
 Group:		Libraries
 Source0:	ftp://ftp.freetype.org/freetype/freetype1/freetype-%{version}.tar.gz
@@ -19,6 +19,7 @@ Patch2:		%{name}-po.patch
 Patch3:		freetype-gcc33.patch
 Patch4:		%{name}-parallel-make.patch
 Patch5:		%{name}-link.patch
+Patch6:		format-security.patch
 URL:		http://freetype.sourceforge.net/freetype1/index.html
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -123,6 +124,7 @@ Przykładowe aplikacje wykorzystujące freetype:
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 %build
 install /usr/share/automake/missing .
