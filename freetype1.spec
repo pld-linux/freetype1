@@ -130,7 +130,10 @@ Przykładowe aplikacje wykorzystujące freetype:
 install /usr/share/automake/missing .
 %{__gettextize}
 # gettextize stupidity (doesn't see intl/Makefile in next lines after AC_OUTPUT)
-sed -e 's@\(AC_OUTPUT.*\) intl/Makefile@\1@' configure.in > configure.in.tmp
+sed -e 's@\(AC_OUTPUT.*\) intl/Makefile@\1@' \
+	-e 's@AM_GNU_GETTEXT.*@AM_GNU_GETTEXT([external])@' \
+	-e 's@intl/Makefile@@' \
+        configure.in > configure.in.tmp
 mv -f configure.in.tmp configure.in
 %{__libtoolize}
 %{__aclocal}
