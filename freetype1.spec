@@ -20,6 +20,7 @@ Patch3:		freetype-gcc33.patch
 Patch4:		%{name}-parallel-make.patch
 Patch5:		%{name}-link.patch
 Patch6:		format-security.patch
+Patch7:		gcc10.patch
 URL:		http://freetype.sourceforge.net/freetype1/index.html
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -125,6 +126,7 @@ Przykładowe aplikacje wykorzystujące freetype:
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
 
 %build
 install /usr/share/automake/missing .
