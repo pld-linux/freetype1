@@ -140,6 +140,12 @@ mv -f configure.in.tmp configure.in
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
+# Ugly hack to avoid error:
+# configure: error: cannot find required auxiliary files: compile missing
+#
+# Proper way would be to use automake which creates these files,
+# but then it fails complaining that no Makefile.am exists
+touch compile missing
 %configure \
 	%{?with_static_libs:--enable-static} \
         --with-gnu-ld
