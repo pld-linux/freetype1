@@ -40,13 +40,3 @@
  #PROCESS = $(CC) $(FT_CFLAGS)
  
  LIBTTF = $(top_builddir)/lib/libttf.la
---- freetype-1.3.1/configure.in.orig	2009-10-08 16:52:50.204105629 +0200
-+++ freetype-1.3.1/configure.in	2009-10-08 17:00:45.140723630 +0200
-@@ -41,6 +41,7 @@ else
-   esac
- fi
- AC_SUBST(XX_CFLAGS)
-+AC_SUBST(LDFLAGS)
- 
- dnl at least Digital UNIX 4.0d needs this due to a strange make program
- 
