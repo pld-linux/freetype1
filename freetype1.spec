@@ -1,8 +1,6 @@
-# TODO:
-# - fix build with libtool-2
 #
 # Conditional build:
-%bcond_without	static_libs	# don't build static libraries
+%bcond_without	static_libs	# static library
 #
 Summary:	Truetype font rasterizer
 Summary(pl.UTF-8):	Rasteryzer fontów Truetype
@@ -28,7 +26,7 @@ URL:		http://freetype.sourceforge.net/freetype1/index.html
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-tools
-BuildRequires:	libtool
+BuildRequires:	libtool >= 2:2
 BuildRequires:	xorg-lib-libX11-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -90,8 +88,8 @@ Summary(pl.UTF-8):	Programy użytkowe freetype
 Group:		Applications
 Requires:	%{name} = %{version}-%{release}
 Provides:	freetype-progs = %{version}
-Obsoletes:	freetype-utils
-Obsoletes:	freetype-tools
+Obsoletes:	freetype-utils < 2
+Obsoletes:	freetype-tools < 2
 
 %description progs
 Freetype library utilites:
@@ -133,24 +131,15 @@ Przykładowe aplikacje wykorzystujące freetype:
 %patch -P8 -p1
 
 %build
-install /usr/share/automake/missing .
 %{__gettextize}
-# gettextize stupidity (doesn't see intl/Makefile in next lines after AC_OUTPUT)
-sed -e 's@\(AC_OUTPUT.*\) intl/Makefile@\1@' \
-	-e 's@AM_GNU_GETTEXT.*@AM_GNU_GETTEXT([external])@' \
-	-e 's@intl/Makefile@@' \
-		configure.in > configure.in.tmp
-mv -f configure.in.tmp configure.in
-echo 'cs de es fr nl' > po/LINGUAS
+# not done by gettextize when no Makefile.am
+install -d m4
+cp -p /usr/share/gettext/m4/*.m4 m4/
 %{__libtoolize}
-%{__aclocal} -I %{_datadir}/gettext/m4
+%{__aclocal} -I m4
 %{__autoconf}
-# Ugly hack to avoid error:
-# configure: error: cannot find required auxiliary files: compile missing
-#
-# Proper way would be to use automake which creates these files,
-# but then it fails complaining that no Makefile.am exists
-touch compile missing
+# automake is not used, so need to copy manually
+cp -p /usr/share/automake/{compile,missing} .
 %configure \
 	%{?with_static_libs:--enable-static} \
         --with-gnu-ld
@@ -177,10 +166,10 @@ rm -rf $RPM_BUILD_ROOT
 %find_lang freetype
 
 # resolve conflict with freetype-demos-2.*
-mv -f $RPM_BUILD_ROOT%{_bindir}/{ftdump,ft1dump}
-mv -f $RPM_BUILD_ROOT%{_bindir}/{ftlint,ft1lint}
-mv -f $RPM_BUILD_ROOT%{_bindir}/{ftview,ft1view}
-mv -f $RPM_BUILD_ROOT%{_bindir}/{fttimer,ft1timer}
+%{__mv} $RPM_BUILD_ROOT%{_bindir}/{ftdump,ft1dump}
+%{__mv} $RPM_BUILD_ROOT%{_bindir}/{ftlint,ft1lint}
+%{__mv} $RPM_BUILD_ROOT%{_bindir}/{ftview,ft1view}
+%{__mv} $RPM_BUILD_ROOT%{_bindir}/{fttimer,ft1timer}
 
 for bdir in ttf2bdf ttfbanner; do
 	%{__make} install -C contrib/$bdir \
@@ -203,16 +192,27 @@ rm -rf $RPM_BUILD_ROOT
 %doc howto/unix.txt README announce docs/{*.txt,FAQ,TODO,credits}
 %{_libdir}/libttf.so
 %{_libdir}/libttf.la
-%{_includedir}/*
+%{_includedir}/freetype
 
 %if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libttf.a
 %endif
 
 %files progs
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/f*
-%attr(755,root,root) %{_bindir}/ttf*
+%attr(755,root,root) %{_bindir}/ft1dump
+%attr(755,root,root) %{_bindir}/ft1lint
+%attr(755,root,root) %{_bindir}/ft1timer
+%attr(755,root,root) %{_bindir}/ft1view
+%attr(755,root,root) %{_bindir}/fterror
+%attr(755,root,root) %{_bindir}/ftmetric
+%attr(755,root,root) %{_bindir}/ftsbit
+%attr(755,root,root) %{_bindir}/ftstring
+%attr(755,root,root) %{_bindir}/ftstrpnm
+%attr(755,root,root) %{_bindir}/ftstrtto
+%attr(755,root,root) %{_bindir}/ftzoom
+%attr(755,root,root) %{_bindir}/ttf2bdf
+%attr(755,root,root) %{_bindir}/ttfbanner
 %{_mandir}/man1/ttf2bdf.1*
