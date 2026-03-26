@@ -8,7 +8,7 @@ Summary:	Truetype font rasterizer
 Summary(pl.UTF-8):	Rasteryzer fontów Truetype
 Name:		freetype1
 Version:	1.3.1
-Release:	16
+Release:	17
 License:	BSD-like
 Group:		Libraries
 Source0:	ftp://ftp.freetype.org/freetype/freetype1/freetype-%{version}.tar.gz
@@ -21,6 +21,9 @@ Patch4:		%{name}-parallel-make.patch
 Patch5:		%{name}-link.patch
 Patch6:		format-security.patch
 Patch7:		gcc10.patch
+# CVE-2008-1808 (off-by-one in Ins_SHC), CVE-2010-3814 (heap overflow in
+# Ins_SHZ), CVE-2010-2520 (heap overflow in Ins_IUP) - bytecode interpreter
+Patch8:		%{name}-CVE-fixes.patch
 URL:		http://freetype.sourceforge.net/freetype1/index.html
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -127,6 +130,7 @@ Przykładowe aplikacje wykorzystujące freetype:
 %patch -P5 -p1
 %patch -P6 -p1
 %patch -P7 -p1
+%patch -P8 -p1
 
 %build
 install /usr/share/automake/missing .
@@ -135,10 +139,11 @@ install /usr/share/automake/missing .
 sed -e 's@\(AC_OUTPUT.*\) intl/Makefile@\1@' \
 	-e 's@AM_GNU_GETTEXT.*@AM_GNU_GETTEXT([external])@' \
 	-e 's@intl/Makefile@@' \
-        configure.in > configure.in.tmp
+		configure.in > configure.in.tmp
 mv -f configure.in.tmp configure.in
+echo 'cs de es fr nl' > po/LINGUAS
 %{__libtoolize}
-%{__aclocal}
+%{__aclocal} -I %{_datadir}/gettext/m4
 %{__autoconf}
 # Ugly hack to avoid error:
 # configure: error: cannot find required auxiliary files: compile missing
@@ -190,13 +195,13 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f freetype.lang
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libttf.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libttf.so.2
+%{_libdir}/libttf.so.*.*.*
+%ghost %{_libdir}/libttf.so.2
 
 %files devel
 %defattr(644,root,root,755)
 %doc howto/unix.txt README announce docs/{*.txt,FAQ,TODO,credits}
-%attr(755,root,root) %{_libdir}/libttf.so
+%{_libdir}/libttf.so
 %{_libdir}/libttf.la
 %{_includedir}/*
 
